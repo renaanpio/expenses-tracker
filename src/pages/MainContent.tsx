@@ -3,32 +3,25 @@ import { Button } from "../components/Button";
 import { useState } from "react";
 
 function MainContent() {
-
-
-
-  const [text, setText] = useState<string>('');
-  const [item, setItem] = useState<string[]>([]);
-
-  const [numm, setNum] = useState<string>('')
-
-  const [enviar, setEnviar] = useState<[]>([]);
+  const [transaction, setTransaction] = useState({} as any);
+  const [armazem, setArmazem] = useState([] as any);
 
   function handleChange(event: any) {
-    let t = event.target.value;
-    setText(t);
-    
+    const { name, value } = event.target;
+
+    setTransaction((prevState: any) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
-  function handleAmountChanger(event: any) {
-    let num = event.target.value;
-    setNum(num)
-    
-  }
+  console.log(transaction);
 
-  function addTransaction(event: any) {
+  function addItems(event: any) {
     event.preventDefault();
-    setItem([...item ,text, numm]) 
-    
+
+    // setArmazem(((oldArray: any) => [...oldArray, transaction]))
+    setArmazem([...armazem, transaction]);
   }
 
   return (
@@ -49,20 +42,17 @@ function MainContent() {
       <form>
         <h4>History</h4>
         <ul>
-          {item?.map((list) => (
-            <li>{list}</li>
+          {armazem.map((lista: any) => (
+            <li>
+              {lista.text} R${lista.number}
+            </li>
           ))}
         </ul>
         <h4>New Item:</h4>
         <input onChange={handleChange} type="text" name="text" id="" />
         <h4>Amount (- for negative):</h4>
-        <input
-          onChange={handleAmountChanger}
-          type="number"
-          name="number"
-          id=""
-        />
-        <Button onClick={addTransaction}>add Transaction</Button>
+        <input onChange={handleChange} type="number" name="number" id="" />
+        <Button onClick={addItems}>add Transaction</Button>
       </form>
     </div>
   );

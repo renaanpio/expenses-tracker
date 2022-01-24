@@ -1,30 +1,30 @@
 .button {
-    margin-top: 10px;
-    height: 50px;
-    width: 100%;
-    border-radius: 8px;
-    font-weight: 500px;
-    background: #CA5501;
-    color: #FFF;
-    padding: 0 32px;
+  margin-top: 10px;
+  height: 50px;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: 500px;
+  background: #ca5501;
+  color: #fff;
+  padding: 0 32px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    //make cursor mode
-    cursor: pointer;
-    border: 0;
+  //make cursor mode
+  cursor: pointer;
+  border: 0;
 
-    transition: filter 0.2s;
+  transition: filter 0.2s;
 
-    //if not enabled
-    &:not(:disabled):hover {
-        filter: brightness(0.9);
-    }
+  //if not enabled
+  &:not(:disabled):hover {
+    filter: brightness(0.9);
+  }
 
-    &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
